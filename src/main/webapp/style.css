@@ -1,0 +1,557 @@
+/* =========================================
+   1. GLOBAL & BODY STYLES
+   ========================================= */
+body {
+	height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: 100% 100vh;
+    background-repeat: no-repeat; 
+    
+    /* Keeps the image fixed so it stays behind your boxes while scrolling */
+    background-attachment: fixed; 
+    
+    /* Centers the image perfectly */
+    background-position: center;
+    background-image: url("images/5.jpg");
+}
+.text-white {
+    color: white;
+    text-align: center;
+}
+/* =========================================
+   2. HEADER & BRANDING (Hotelora)
+   ========================================= */
+header {
+    position: relative;
+    height: 130px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+     backdrop-filter: blur(10px);          /* Blurs the background image behind it */
+    -webkit-backdrop-filter: blur(10px); 
+    overflow: hidden; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.hotel-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    color: #ffffff;
+    position: relative; 
+    display: inline-block;
+    animation: slideToCenter 1.5s 0.5s ease-out forwards;
+    left: -1000px; 
+    opacity: 0;
+}
+
+@keyframes slideToCenter {
+    0% { left: -1000px; opacity: 0; }
+    100% { left: 50%; transform: translateX(-50%); opacity: 1; }
+}
+
+.letter1 { color: #ff0055; } .letter2 { color: #ff9900; }
+.letter3 { color: #ffcc00; } .letter4 { color: #0099ff; }
+.letter5 { color: #0073e6; } .letter6 { color: #33cc33; }
+.letter7 { color: #9933ff; } .letter8 { color: #ff66cc; }
+
+/* =========================================
+   3. NAVIGATION BAR
+   ========================================= */
+ul.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #C19A6B;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+ul.nav-bar li { float: left; }
+ul.nav-bar li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 19px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+ul.nav-bar li a:hover { background-color:#EADDCA; }
+ul.nav-bar li a.active { background-color:#E1C16E; color:black; }
+
+/* 1. The list item acts as the anchor point */
+.nav-bar li.about-container {
+    position: relative; 
+    width: 100px; 
+    height: 55px;
+    margin-left: 15px;
+}
+
+/* 2. The actual box that grows */
+.nav-bar li.about-container .about-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 45px;
+    background-color: red;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1000; /* Ensures it floats ABOVE the search box and content */
+    
+    /* YOUR TRANSITION LOGIC */
+    transition: width 2s, height 4s, background-color 3s;
+    overflow: hidden;
+}
+
+/* 3. The Hover State */
+.nav-bar li.about-container:hover .about-box {
+    width: 300px;
+    height: 300px;
+    background-color: orange;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Adds depth as it pops out */
+}
+
+/* Link styling */
+.about-box a {
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+/* Container for the buttons */
+.auth-links {
+    position: absolute;
+    top: 25px;       /* Slightly more spacing from the top */
+    right: 30px;     /* Slightly more spacing from the right */
+    z-index: 20;
+    display: flex;
+    gap: 15px;       /* Increased gap between Login and Register */
+}
+
+/* The Buttons */
+.auth-link {
+    font-size: 18px;            /* BIGGER TEXT */
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 19px 35px;         /* BIGGER PADDING (Height and Width) */
+    background-color: rgba(0, 0, 0, 0.4); /* Darker background for better contrast */
+    border: 2px solid white;    /* Thicker border */
+    border-radius: 8px;         /* Slightly softer corners */
+    transition: all 0.3s ease;  /* Smooth transition for hover */
+    display: inline-block;
+    text-align: center;
+    min-width: 100px;           /* Ensures a consistent minimum size */
+}
+
+/* Hover Effect - Makes them pop when you mouse over */
+.auth-link:hover {
+    background-color: white;
+    color: #333;               /* Text turns dark when background turns white */
+    transform: scale(1.1);      /* Button grows slightly bigger on hover */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Adds a white glow */
+}
+
+/* =========================================
+   4. SEARCH BOX & FORMS
+   ========================================= */
+
+.search-box {
+    max-width: 850px; /* Slightly wider for a grander feel */
+    width: 98%; 
+    margin: 250px auto 60px auto; 
+    padding: 40px;
+    text-align: center; 
+    
+    /* Premium Glassmorphism */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Soft border and deep shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the Labels (Optional but recommended) */
+.search-box label {
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* The actual Input fields */
+input, select {
+    width: 100%;
+    padding: 16px 20px; /* Larger padding for a "breathe-able" look */
+    margin-bottom: 25px;
+    border-radius: 12px; /* Smoother corners */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9); /* Solid white but slightly soft */
+    
+    /* Bigger Text */
+    font-size: 18px; 
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Premium Focus Effect */
+input:focus, select:focus {
+    outline: none;
+    border-color: #E1C16E; /* Matches your active gold color */
+    box-shadow: 0 0 0 4px rgba(225, 193, 110, 0.3);
+    background: #ffffff;
+}
+
+/* Premium Search Button within the box */
+.search-box button, .search-box input[type="submit"] {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #C19A6B 0%, #a67c4e 100%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.button-group .return-btn {
+    display: block;          /* Makes the link fill the width */
+    width: 100%;
+    padding: 18px 0;         /* Uniform height */
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    text-decoration: none;   /* Removes underline from link */
+    text-align: center;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.search-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #d4b48f 0%, #C19A6B 100%);
+}
+.button-group {
+    display: flex;
+    flex-direction: column; /* Stacks them vertically */
+    gap: 12px;
+    margin-top: 30px;
+    width: 100%;
+}
+.button-group .return-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    font-size: 15px; /* Slightly smaller for hierarchy */
+}
+
+.button-group .return-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+/* =========================================
+   5. MODERN ROOM CARDS (Replaces Tables)
+   ========================================= */
+.room-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.room-card {
+    display: flex; /* Horizontal Layout */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 240px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Image Section */
+.room-image-box {
+    width: 30%;
+    position: relative;
+}
+
+.room-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps image proportions */
+}
+
+/* Middle Details Section */
+.room-details-box {
+    width: 45%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #f2f2f2;
+}
+
+.room-name-link {
+    color: #0071c2;
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.location-text {
+    color: #0071c2;
+    font-size: 12px;
+    text-decoration: underline;
+    margin: 5px 0;
+}
+
+.room-specs {
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.inclusion-text {
+    color: #008009; /* Booking Green */
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+/* Right Pricing Section */
+.room-price-box {
+    width: 25%;
+    padding: 15px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.price-info { font-size: 12px; color: #666; }
+.price-value {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.book-btn {
+    background-color: #C19A6B;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.book-btn:hover {
+    background-color:#EADDCA;
+}
+
+.back-btn-premium {
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #ccc !important;
+}
+
+.back-btn-premium:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+/* =========================================
+   7. BOOKING INFO TABLE (Inside search-box)
+   ========================================= */
+.booking-container {
+    width: 100%;
+    overflow-x: auto; /* Adds scroll on mobile so the table doesn't break */
+    margin-top: 20px;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.9); /* Slightly more solid for readability */
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.booking-table th {
+    background-color: #C19A6B; /* Matches your nav-bar */
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.booking-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.booking-table tr:last-child td {
+    border-bottom: none;
+}
+
+.booking-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Status Badge */
+.status-badge {
+    background-color: #008009;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+/* =========================================
+   8. CONFIRMATION PAGE (book_room.jsp)
+   ========================================= */
+.center-page {
+    background-color: #f4f4f4;
+}
+
+/* Container for displaying room info inside the form */
+.room-summary-box {
+    background: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 6px solid #003b95;
+}
+
+.room-summary-box label {
+    color: #003b95;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+}
+
+/* =========================================
+   MODERN DATE PICKER STYLING
+   ========================================= */
+
+/* The Input field itself */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 14px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    visibility: visible;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Change the color of the calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.6;
+    filter: invert(48%) sepia(13%) saturate(1200%) hue-rotate(354deg) brightness(95%) contrast(88%); /* Matches your Gold/Tan color #C19A6B */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Focus state */
+input[type="date"]:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #E1C16E;
+    box-shadow: 0 0 0 4px rgba(225, 193, 110, 0.2);
+}
+
+/* Placeholder color for browsers that support it */
+input[type="date"]::placeholder {
+    color: #999;
+}
+
+/* Custom styling for read-only fields */
+input[readonly] {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    cursor: not-allowed;
+    font-weight: bold;
+    color: #495057;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #003b95;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+/* Target the About section specifically */
+
+
+
+/* =========================================
+   6. FOOTER
+   ========================================= */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set a specific height */
+    text-align: center;
+    background: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Hotelora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="auth-links">
+        <a href="Homepage.jsp" class="auth-link">Home</a>
+        <a href="login.jsp" class="auth-link">Login</a>
+    </div>
+
+    <header>
+        <div class="hotel-name">
+            <span class="letter1">H</span>
+            <span class="letter2">O</span>
+            <span class="letter3">T</span>
+            <span class="letter4">E</span>
+            <span class="letter5">L</span>
+            <span class="letter6">O</span>
+            <span class="letter7">R</span>
+            <span class="letter8">A</span>
+        </div>
+        <p>Experience Comfort & Luxury</p>
+    </header>
+
+    <div class="search-box">
+        <h2 style="text-align: center; color: #333;">Create Account</h2>
+
+        <form action="RegisterServlet" method="post">
+            
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname"  required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"  placeholder="example@gmail.com"required>
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone"  required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button class="book-btn" type="submit">Register Now</button>
+        </form>
+
+        <p style="text-align: center; margin-top: 15px;">
+            Already have an account? <a href="login.jsp" style="color: #0073e6; font-weight: bold;">Login here</a>
+        </p>
+    </div>
+
+    
+
+</body>
+</html>
