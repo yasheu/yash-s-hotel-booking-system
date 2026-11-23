@@ -22,32 +22,7 @@ Customer management: view and delete customer records
 Booking report: total revenue, number of payments, revenue by room type and top 5 customers
 
 
-Architecture (MVC)
-        Browser
-           │  HTTP request
-           ▼
- ┌─────────────────────┐
- │  Controller          │  Java Servlets (@WebServlet)
- │  LoginController,    │  - read form input
- │  ConfirmBooking...   │  - call Model / DAO
- └─────────┬───────────┘  - forward / redirect to View
-           │
-     ┌─────┴──────┐
-     ▼            ▼
- ┌────────┐  ┌──────────────────┐
- │ Model  │  │ DAO / DB access   │──── JDBC ───▶  MySQL
- │ JavaBeans │ UserDAO, PaymentDAO│               (hotel_booking_system)
- │ User, Room,│ ConnectionManager │
- │ Booking,   └──────────────────┘
- │ Payment │
- └────────┘
-     │
-     ▼
- ┌─────────────────────┐
- │  View                │  JSP / HTML + CSS
- │  Homepage.jsp,       │  - display data passed via
- │  book_room.jsp, ...  │    request / session attributes
- └─────────────────────┘
+
 
 Tech Stack
 Language	Java 21
@@ -57,39 +32,6 @@ Database	MySQL (via MySQL Connector/J 8.0.31)
 Front end	HTML, CSS
 IDE	Eclipse IDE for Enterprise Java (Dynamic Web Project)
 
-Project Structure
-HotelBookingSystem/
-├── src/main/java/
-│   ├── login/                       # Authentication
-│   │   ├── ConnectionManager.java   # MySQL JDBC connection
-│   │   ├── User.java                # Model
-│   │   ├── UserDAO.java             # DAO
-│   │   ├── LoginController.java     # Controller
-│   │   └── LogoutController.java
-│   └── hotel/                       # Hotel / booking module
-│       ├── Room.java, Booking.java, Payment.java   # Models
-│       ├── PaymentDAO.java                         # DAO
-│       ├── RegisterServlet.java
-│       ├── ViewAvailableRoomsServlet.java
-│       ├── ConfirmBookingServlet.java
-│       ├── PaymentServlet.java, ProcessPaymentServlet.java
-│       ├── ViewMyBookingsServlet.java, DeleteBookingServlet.java
-│       ├── AddRoomServlet.java, UpdateRoomServlet.java, DeleteRoomServlet.java
-│       ├── ViewRoomsForUpdateServlet.java, ViewRoomsForDeleteServlet.java
-│       ├── ViewAllBookingsServlet.java, DeleteAllBookingsServlet.java
-│       ├── ViewAllCustomersServlet.java, DeleteCustomerServlet.java
-│       └── ViewReportServlet.java
-└── src/main/webapp/
-    ├── Homepage.jsp, about.jsp, login.jsp, register.html
-    ├── book_room.jsp, suggestedrooms.jsp, BookingInfo.jsp
-    ├── payment.jsp, receipt.jsp
-    ├── admin_homepage.html, add_room.jsp, updateroom.jsp, deleteroom.jsp
-    ├── viewallbooking.jsp, deletecustomerdata.jsp, viewBookingReport.jsp
-    ├── error.jsp, style.css
-    ├── images/
-    └── WEB-INF/
-        ├── web.xml
-        └── lib/                     # MySQL connector + JSTL jars
 
 Database
 
